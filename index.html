@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>List</title>
+	<link rel="stylesheet" href="./css/style.css">
+	<script type="text/javascript">
+		(function (doc, win) {
+			//          
+			if (doc.documentElement.currentStyle) {
+				var user_webset_font = doc.documentElement.currentStyle['fontSize'];
+			} else {
+				var user_webset_font = getComputedStyle(doc.documentElement, false)['fontSize'];
+			}
+
+			//         
+			var xs = parseFloat(user_webset_font) / 16;
+			//          
+			var view_jsset_font, result_font;
+
+			var docEl = doc.documentElement,
+				resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+				clientWidth,
+				recalc = function () {
+					clientWidth = docEl.clientWidth;
+					if (!clientWidth) return;
+					if (!doc.addEventListener) return;
+					if (clientWidth < 1336) {
+						//                  
+						view_jsset_font = 40 * (clientWidth / 750);
+						//                  
+						result_font = view_jsset_font / xs;
+						//                 
+						docEl.style.fontSize = result_font + 'px';
+					}
+
+				};
+
+			win.addEventListener(resizeEvt, recalc, false);
+			doc.addEventListener('DOMContentLoaded', recalc, false);
+		})(document, window);
+	</script>
+</head>
+
+<body>
+	<div class="box">
+		<div id="header">
+			<h1>BUY</h1>
+			<h1>
+				GROCERIES
+			</h1>
+		</div>
+		<div class="content">
+			<p class="title">Insert what you want to buy</p>
+			<div class="input">
+				<input type="text" id="content" placeholder="your item here" />
+			</div>
+			<div class="button">
+				<button id="add">ADD TO LIST</button>
+			</div>
+
+			<ul id="list"></ul>
+		</div>
+		<div id="social">
+			<a id="facebook" href="https://facebook.com"><img src="img/facebook.png"></a>
+			<a id="instagram" href="https://instagram.com"><img src="img/instagram.jpg"></a>
+			<a id="twitter" href="https://twitter.com"><img src="img/twitter.png"></a>
+		</div>
+	</div>
+
+
+	<script src="./js/index.js"></script>
+</body>
+
+</html>
